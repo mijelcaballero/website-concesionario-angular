@@ -1,0 +1,111 @@
+/* General */
+html, body {
+    height: 100%; /* Asegura que el fondo cubra toda la pantalla */
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Fuente moderna y legible */
+    color: #f5f5f5; /* Texto en blanco hueso */
+    line-height: 1.7; /* Mejora la legibilidad */
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el contenido siempre ocupe el 100% del alto de la pantalla */
+  }
+  
+  /* Contenedor principal */
+  .container {
+    flex: 1; /* Permite que el contenedor principal se expanda */
+    padding: 25px;
+    margin-top: 60px;
+    border-radius: 8px; /* Bordes redondeados para suavidad */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 1200px; /* Limita el ancho del contenido principal */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Títulos */
+  h1, h2 {
+    color: #1f1a1a; /* Títulos en rojo intenso */
+    font-weight: bold;
+    text-transform: uppercase; /* Mayúsculas para más impacto */
+    letter-spacing: 1px; /* Espaciado entre letras para elegancia */
+    margin-bottom: 20px;
+    text-align: center; /* Centra los títulos */
+  }
+  
+  /* Párrafos */
+  p {
+    color: #e0e0e0; /* Texto en gris claro */
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Botones */
+  .btn-primary {
+    background-color: #d32f2f; /* Botón en rojo intenso */
+    border-color: #d32f2f;
+    color: #ffffff; /* Texto blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background-color: #b71c1c; /* Botón más oscuro al pasar el mouse */
+    border-color: #b71c1c;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Añadir una sombra más fuerte al pasar el mouse */
+  }
+  
+  /* Carouseles */
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente para mejor legibilidad */
+    color: #ffffff; /* Texto blanco hueso */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    text-align: center;
+  }
+  
+  .carousel-caption h5 {
+    font-size: 1.5rem;
+    color: #f5f5f5; /* Mantener el blanco hueso en los títulos */
+    margin-bottom: 10px;
+  }
+  
+  .carousel-caption p {
+    font-size: 1.1rem;
+    color: #f5f5f5; /* Texto en blanco hueso */
+    margin: 0;
+  }
+  
+  /* Estilos para los indicadores del carrusel */
+  .carousel-indicators button {
+    background-color: #d32f2f; /* Indicadores en rojo intenso */
+    border-radius: 50%; /* Indicadores redondeados */
+    width: 12px;
+    height: 12px;
+  }
+  
+  .carousel-indicators .active {
+    background-color: #ffffff; /* Indicador activo en blanco */
+  }
+  
+  /* Ajustes del Carrusel */
+  .carousel-item {
+    background-color: #444444; /* Fondo gris oscuro para las imágenes del carrusel */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  /* Estilos para enlaces */
+  a {
+    color: #d32f2f; /* Enlaces en rojo */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #b71c1c; /* Rojo más oscuro al pasar el mouse */
+  }
+  

@@ -1,0 +1,140 @@
+{"autos": [
+    {
+      "id": 1,
+      "name": "JOY HB - BLACK",
+      "image": "/assets/images/auto1.avif",
+      "description": "All New Chevrolet Joy HB evoluciona contigo con su versión Black Edition para que disfrutes de un nuevo concepto y experiencia.",
+      "category": "vehiculo",
+      "price": 15299.00
+    },
+    {
+      "id": 2,
+      "name": "ONIX TURBO - RS",
+      "image": "/assets/images/auto2.jpg",
+      "description": "EL AUTO QUE SE INTEGRA A TU VIDA Y TE DA MÁS DE LO QUE ESPERAS\n\n\nManejar el Onix Turbo RS es vivir una experiencia inédita por su diseño, seguridad y desempeño. Cuenta con un motor turbo de alto rendimiento preparado para superar las expectativas de los más exigentes",
+      "category": "vehiculo",
+      "price": 19999.00
+    },
+    {
+        "id": 3,
+        "name": "GROOVE SUV",
+        "image": "/assets/images/auto3.avif",
+        "description": "Donde sea que te lleve el ritmo \nDeportivo y moderno con un atractivo que llama la atención, Chevrolet Groove es un SUV compacto, diseñado para ser tan original como tú. No solo se ve bien, sino que cuenta con un equipamiento de seguridad del más alto nivel, además de gran espacio interior, para prepararte para el próximo capítulo de la vida.",
+        "category": "vehiculo",
+        "price": 19999.00
+    },
+    {
+        "id": 4,
+        "name": "TAHOE SUV",
+        "image": "/assets/images/auto4.avif",
+        "description": "Un SUV que te deja sin palabras.\n\nEl Chevrolet Tahoe es grande y robusto, conocido por su espacio amplio, capacidad de remolque impresionante y un motor potente.\n\nEs ideal para familias grandes o personas que buscan un vehículo espacioso y cómodo para viajar largas distancias.\n\nAdemás, cuenta con características tecnológicas modernas y opciones de lujo que lo convierten en una excelente opción para quienes desean un SUV confiable y versátil, tanto para la ciudad como para aventuras fuera de carretera.",
+        "category": "vehiculo",
+        "price": 131999.00
+    },
+    {
+        "id": 5,
+        "name": "2023 BOLT EUV",
+        "image": "/assets/images/auto5.avif",
+        "description": "¿Cómo se ve el futuro? Elegante, con un interior tecnológico que te hace sentir que el pasado quedó atrás.\nDescubre el futuro con el nuevo Chevrolet Bolt EUV.",
+        "category": "vehiculo",
+        "price": 47490.00
+    },
+    {
+        "id": 6,
+        "name": "D-MAX HI-RIDE",
+        "image": "/assets/images/auto6.avif",
+        "description": "Inspirados en la potencia, rendimiento y tecnología de la familia D-Max, presentamos a su nuevo integrante: D-Max Hi-Ride, una camioneta tan versátil, como tu estilo de vida. D-Max Hi-Ride, no solo tiene todo para el trabajo, sino también para ir en busca de nuevas aventuras, disfrutar paseos en familia o recorridos por la ciudad.\nEncuentra una camioneta completa para todo lo que eres.",
+        "category": "vehiculo",
+        "price": 29999.00
+    },
+    {
+        "id": 7,
+        "name": "COLORADO",
+        "image": "/assets/images/auto7.avif",
+        "description": "Colorado, conquistar el mundo es posible para los que nunca se detienen.\nEsta camioneta es para uno en un millón porque es para quienes tienen potencia para seguir sin importar el camino y para los que llegan a la cima, pero buscan ir más arriba. Sorpréndete con Colorado, suprema potencia en su categoría y no solo por su motor.",
+        "category": "vehiculo",
+        "price": 46999.00
+    },
+    {
+      "id": 8,
+      "name": "SILVERADO",
+      "image": "/assets/images/auto8.avif",
+      "description": "PODER PARA CONQUISTAR TODOS LOS CAMINOS\nPrepárate para conocer la nueva versión de Silverado que llegó para impactar. Ya sea en la aventura Off-Road más exigente o explorando la ciudad, Chevrolet Silverado tiene la potencia, diseño y tecnología para que puedas cambiar el mundo.",
+      "category": "vehiculo",
+      "price": 91499.00
+  } 
+],
+
+"motos": [
+    {
+      "id": 1,
+      "name": "Motocicleta BAJAJ PULSAR 180 (2024)",
+      "image": "/assets/images/moto1.jpg",
+      "description": "La Bajaj Pulsar 180 (2024) es una motocicleta deportiva moderna, ideal para quienes buscan estilo y rendimiento.\nEquipada con un motor potente de 180cc, ofrece una conducción dinámica y ágil tanto en ciudad como en carretera.",
+      "category": "motocicleta",
+      "price": 2976.99
+    },
+    {
+      "id": 2,
+      "name": "Motocicleta CFMOTO 450SR SPORT",
+      "image": "/assets/images/moto2.jpg",
+      "description": "La CFMOTO 450SR Sport es una motocicleta deportiva diseñada para ofrecer una experiencia de conducción emocionante y precisa. Con un motor de 450cc, proporciona una potencia destacada y un rendimiento ágil en la pista o en la carretera.\nSu diseño moderno y agresivo está acompañado de características avanzadas como frenos de disco y una suspensión deportiva, garantizando estabilidad y control en todo momento.",
+      "category": "motocicleta",
+      "price": 10477.99
+    },
+    {
+        "id": 3,
+        "name": "Motocicleta DAYTONA DY200 GTR ROADSTER 200",
+        "image": "/assets/images/moto3.jpg",
+        "description": "La Daytona DY200 GTR Roadster 200 es una motocicleta versátil y estilizada, perfecta para quienes buscan una experiencia de conducción cómoda y dinámica. Equipada con un motor de 200cc, ofrece un rendimiento confiable para el uso diario y aventuras ocasionales.\nSu diseño elegante y moderno, combinado con una suspensión eficiente y frenos de disco, proporciona una conducción segura y agradable en diferentes tipos de carretera.",
+        "category": "motocicleta",
+        "price": 2052.99
+    },
+    {
+        "id": 4,
+        "name": "Motocicleta CFMOTO 700CLX SPORT",
+        "image": "/assets/images/moto4.jpg",
+        "description": "La CFMoto 700CLX Sport es una motocicleta deportiva y elegante que destaca por su diseño moderno y sus características de alto rendimiento. Con un motor de 700cc, ofrece una potencia impresionante y una aceleración ágil, ideal para quienes buscan emoción en cada trayecto.\nSu chasis ligero y su suspensión avanzada aseguran una conducción estable y precisa, mientras que su diseño aerodinámico y agresivo le confiere una presencia llamativa en la carretera.\nPerfecta para los amantes de las motos deportivas que desean combinar estilo y potencia en sus aventuras.",
+        "category": "motocicleta",
+        "price": 12023.99
+    }
+    
+  ],
+
+"pesados": [
+    {
+      "id": 1,
+      "name": "DUTRO 616",
+      "image": "/assets/images/pesado1.jpg",
+      "description": "El Dutro 616 es un camión ligero y versátil diseñado para ofrecer un excelente rendimiento en la distribución urbana y transporte de mercancías.\nEquipado con un motor eficiente y una capacidad de carga destacada, este vehículo es ideal para pequeñas y medianas empresas que requieren un transporte confiable y económico.",
+      "category": "pesado",
+      "price": 35990.00
+    },
+    {
+      "id": 2,
+      "name": "HINO GH8",
+      "image": "/assets/images/pesado2.jpg",
+      "description": "El HINO GH8 es un camión mediano robusto, diseñado para operaciones de transporte de carga pesada en distancias largas.\nCon un motor potente y eficiente, el GH8 ofrece un rendimiento confiable y duradero, ideal para empresas que requieren transporte industrial.\nSu cabina cómoda y equipada garantiza una experiencia de conducción agradable, mientras que su chasis reforzado le permite manejar cargas exigentes con facilidad.",
+      "category": "pesado",
+      "price": 96490.95
+    },
+    {
+        "id": 3,
+        "name": "Hino FS1ELSD",
+        "image": "/assets/images/pesado3.jpg",
+        "description": "El Hino FS1ELSD es un camión de gran capacidad, ideal para transportar cargas pesadas en largas distancias.\nEquipado con un motor potente y un chasis robusto, está diseñado para operaciones industriales exigentes.\nSu tracción mejorada y estabilidad hacen que sea adecuado para todo tipo de terrenos.",
+        "category": "pesado",
+        "price": 127990.00
+    },
+    {
+        "id": 4,
+        "name": "Hino ZS1EPVD",
+        "image": "/assets/images/pesado4.webp",
+        "description": "El Hino ZS1EPVD es un camión de alto rendimiento diseñado para el transporte pesado y operaciones industriales. Cuenta con un motor potente y eficiente que ofrece gran capacidad de carga y fiabilidad en largas distancias. Su diseño robusto y su sistema de suspensión avanzada garantizan una conducción estable incluso en terrenos difíciles.\nLa cabina está diseñada para proporcionar comodidad al conductor, con controles accesibles y espacio amplio para jornadas prolongadas.",
+        "category": "pesado",
+        "price": 139990.00
+    }
+    
+  ]
+}
+  

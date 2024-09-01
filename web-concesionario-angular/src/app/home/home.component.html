@@ -1,0 +1,97 @@
+<div class="container">
+    <h1 class="my-4">Bienvenido a GRUPO LEDESMA</h1>
+    
+    <!-- Carrusel de Autos -->
+    <h2 class="my-4">Conoce el auto que es para ti</h2>
+    <div *ngIf="loading">Cargando autos...</div>
+    <div id="autoCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let auto of autos; let i = index" [ngClass]="{'carousel-item': true, 'active': i === 0}">
+          <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+            <img [src]="auto.image" class="d-block" style="object-fit: cover; height: 100%; width: auto;" [alt]="auto.name">
+          </div>
+          <div class="carousel-caption">
+            <h3>{{ auto.name }}</h3>
+            <p>{{ auto.price | currency }}</p>
+            <a [routerLink]="['/autos', auto.id]" class="btn btn-primary">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+      <!-- Controles del carrusel -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#autoCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#autoCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      <!-- Indicadores del carrusel -->
+      <div class="carousel-indicators">
+        <button *ngFor="let auto of autos; let i = index" type="button" [attr.data-bs-target]="'#autoCarousel'" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}" [attr.aria-current]="i === 0 ? 'true' : null" [attr.aria-label]="'Slide ' + (i + 1)"></button>
+      </div>
+    </div>
+  
+    <!-- Carrusel de Motos -->
+    <h2 class="my-4">Siente la velocidad y la adenalina</h2>
+    <div *ngIf="loading">Cargando motos...</div>
+    <div id="motoCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let moto of motos; let i = index" [ngClass]="{'carousel-item': true, 'active': i === 0}">
+          <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+            <img [src]="moto.image" class="d-block" style="object-fit: cover; height: 100%; width: auto;" [alt]="moto.name">
+          </div>
+          <div class="carousel-caption">
+            <h3>{{ moto.name }}</h3>
+            <p>{{ moto.price | currency }}</p>
+            <a [routerLink]="['/motos', moto.id]" class="btn btn-primary">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+      <!-- Controles del carrusel -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#motoCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#motoCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      <!-- Indicadores del carrusel -->
+      <div class="carousel-indicators">
+        <button *ngFor="let moto of motos; let i = index" type="button" [attr.data-bs-target]="'#motoCarousel'" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}" [attr.aria-current]="i === 0 ? 'true' : null" [attr.aria-label]="'Slide ' + (i + 1)"></button>
+      </div>
+    </div>
+  
+    <!-- Carrusel de Pesados -->
+    <h2 class="my-4">Ahorra con potencia y motores Turbo Diésel</h2>
+    <div *ngIf="loading">Cargando pesados...</div>
+    <div id="pesadoCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let pesado of pesados; let i = index" [ngClass]="{'carousel-item': true, 'active': i === 0}">
+          <div class="d-flex justify-content-center align-items-center" style="height: 400px;">
+            <img [src]="pesado.image" class="d-block" style="object-fit: cover; height: 100%; width: auto;" [alt]="pesado.name">
+          </div>
+          <div class="carousel-caption">
+            <h3>{{ pesado.name }}</h3>
+            <p>{{ pesado.price | currency }}</p>
+            <a [routerLink]="['/pesados', pesado.id]" class="btn btn-primary">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+      <!-- Controles del carrusel -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#pesadoCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#pesadoCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      <!-- Indicadores del carrusel -->
+      <div class="carousel-indicators">
+        <button *ngFor="let pesado of pesados; let i = index" type="button" [attr.data-bs-target]="'#pesadoCarousel'" [attr.data-bs-slide-to]="i" [ngClass]="{'active': i === 0}" [attr.aria-current]="i === 0 ? 'true' : null" [attr.aria-label]="'Slide ' + (i + 1)"></button>
+      </div>
+    </div>
+</div>
+  

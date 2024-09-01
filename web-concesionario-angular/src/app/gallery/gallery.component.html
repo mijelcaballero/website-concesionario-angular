@@ -1,0 +1,55 @@
+<div class="container">
+    <!-- Autos Section -->
+    <h2 class="my-4">Cotiza tu automovil con nosotros al mejor precio</h2>
+    <div *ngIf="loading">Cargando autos...</div>
+    <div *ngIf="!loading && autos.length === 0">No hay autos disponibles</div>
+    <div *ngIf="!loading && autos.length > 0" class="row">
+      <div class="col-lg-3 col-md-4" *ngFor="let auto of autos">
+        <div class="card h-100">
+          <img [src]="auto.image" class="card-img-top" [alt]="auto.name" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ auto.name }}</h5>
+            <p class="card-text">{{ auto.description }}</p>
+            <p class="card-text">Precio: {{ auto.price | currency }}</p>
+            <a [routerLink]="['/autos', auto.id]" class="btn btn-primary">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Motos Section -->
+    <h2 class="my-4">Motocicletas deportivas de gran cilindraje</h2>
+    <div *ngIf="loading">Cargando motos...</div>
+    <div *ngIf="!loading && motos.length === 0">No hay motos disponibles</div>
+    <div *ngIf="!loading && motos.length > 0" class="row">
+      <div class="col-lg-3 col-md-4" *ngFor="let moto of motos">
+        <div class="card h-100">
+          <img [src]="moto.image" class="card-img-top" [alt]="moto.name" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ moto.name }}</h5>
+            <p class="card-text">{{ moto.description }}</p>
+            <p class="card-text">Precio: {{ moto.price | currency }}</p>
+            <a [routerLink]="['/motos', moto.id]" class="btn btn-primary">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Vehículos Pesados Section -->
+    <h2 class="my-4">Grandes Maquinas para trabajos pesados</h2>
+    <div *ngIf="loading">Cargando vehículos pesados...</div>
+    <div *ngIf="!loading && pesados.length === 0">No hay vehículos pesados disponibles</div>
+    <div *ngIf="!loading && pesados.length > 0" class="row">
+      <div class="col-lg-3 col-md-4" *ngFor="let pesado of pesados">
+        <div class="card h-100">
+          <img [src]="pesado.image" class="card-img-top" [alt]="pesado.name" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ pesado.name }}</h5>
+            <p class="card-text">{{ pesado.description }}</p>
+            <p class="card-text">Precio: {{ pesado.price | currency }}</p>
+            <a [routerLink]="['/pesados', pesado.id]" class="btn btn-primary">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>

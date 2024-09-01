@@ -1,0 +1,16 @@
+<div class="container">
+    <div *ngIf="loading">Cargando detalles del auto...</div>
+  
+    <div *ngIf="!loading && auto" class="auto-detail-container">
+      <h1 class="auto-title">{{ auto?.name }}</h1>
+      <img [src]="auto?.image" alt="{{ auto?.name }}" class="auto-image" />
+      <p class="auto-description">{{ auto?.description }}</p>
+      <p class="auto-price">Precio: {{ auto?.price | currency }}</p>
+  
+      <button class="btn btn-primary">Comprar</button>
+    </div>
+  
+    <div *ngIf="!loading && !auto">
+      <p>Auto no encontrado</p>
+    </div>
+</div>

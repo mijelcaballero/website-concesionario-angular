@@ -1,0 +1,17 @@
+<div class="container">
+    <div *ngIf="loading">Cargando detalles del vehículo pesado...</div>
+  
+    <div *ngIf="!loading && pesado" class="pesado-detail-container">
+      <h1 class="pesado-title">{{ pesado?.name }}</h1>
+      <img [src]="pesado?.image" alt="{{ pesado?.name }}" class="pesado-image" />
+      <p class="pesado-description">{{ pesado?.description }}</p>
+      <p class="pesado-price">Precio: {{ pesado?.price | currency }}</p>
+  
+      <button class="btn btn-primary">Comprar</button>
+    </div>
+  
+    <div *ngIf="!loading && !pesado">
+      <p>Vehículo pesado no encontrado</p>
+    </div>
+</div>
+  

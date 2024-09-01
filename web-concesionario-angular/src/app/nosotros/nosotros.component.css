@@ -1,0 +1,82 @@
+/* Contenedor Principal */
+.nosotros-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 70px;
+  }
+  
+  /* Títulos */
+  h1 {
+    font-size: 2.5rem;
+    color: #b22222; /* Rojo suave */
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Párrafos */
+  p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  /* Directivos */
+  .directivo {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .directivo img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+  
+  .directivo h3 {
+    font-size: 1.25rem;
+    color: #b22222; /* Rojo suave */
+    margin-bottom: 0.5rem;
+  }
+  
+  .directivo p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nosotros-container {
+      padding: 1.5rem;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    h2 {
+      font-size: 1.5rem;
+    }
+  
+    .directivo img {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .directivo h3 {
+      font-size: 1.1rem;
+    }
+  }
+  

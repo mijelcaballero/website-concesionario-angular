@@ -1,0 +1,75 @@
+/* Contenedor principal */
+.container {
+  text-align: center;
+  padding: 100px 20px; /* Ajuste del padding para mejorar la apariencia en pantallas grandes y pequeñas */
+  background-color: #f8f8f8; /* Fondo gris claro */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Imagen de Not Found */
+.not-found-image {
+  max-width: 600px; /* Limitar el tamaño máximo para mantener la imagen controlada en pantallas grandes */
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 40px auto; /* Espacio debajo de la imagen */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave para la imagen */
+}
+
+/* Título del mensaje Not Found */
+h1 {
+  font-size: 3rem;
+  color: #b22222; /* Rojo suave */
+  margin-bottom: 20px;
+}
+
+/* Mensaje secundario */
+p {
+  font-size: 1.25rem;
+  color: #333; /* Gris oscuro */
+  margin-bottom: 40px;
+}
+
+/* Botón para regresar */
+.btn-home {
+  background-color: #b22222; /* Rojo suave */
+  border-color: #b22222;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Botón hover */
+.btn-home:hover {
+  background-color: #a61b1b; /* Rojo oscuro en hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .container {
+    padding: 50px 15px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .btn-home {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}

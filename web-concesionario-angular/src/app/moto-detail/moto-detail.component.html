@@ -1,0 +1,17 @@
+<div class="container">
+    <div *ngIf="loading">Cargando detalles de la moto...</div>
+  
+    <div *ngIf="!loading && moto" class="moto-detail-container">
+      <h1 class="moto-title">{{ moto?.name }}</h1>
+      <img [src]="moto?.image" alt="{{ moto?.name }}" class="moto-image" />
+      <p class="moto-description">{{ moto?.description }}</p>
+      <p class="moto-price">Precio: {{ moto?.price | currency }}</p>
+  
+      <button class="btn btn-primary">Comprar</button>
+    </div>
+  
+    <div *ngIf="!loading && !moto">
+      <p>Moto no encontrada</p>
+    </div>
+</div>
+  
