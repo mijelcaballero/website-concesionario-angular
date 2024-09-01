@@ -1,16 +1,16 @@
 /* Barra de navegación personalizada */
 .custom-navbar {
   background-color: #333; /* Gris oscuro para el fondo de la barra de navegación */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada para un efecto más moderno */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
   padding: 0.75rem 1.5rem; /* Padding aumentado para un diseño más espacioso */
   margin-bottom: 1rem; /* Margen inferior aumentado */
-  border-bottom: 4px solid #ff4b4b; /* Línea roja en la parte inferior para un toque de color */
+  border-bottom: 4px solid #ff4b4b; /* Línea roja en la parte inferior */
 }
 
 .custom-navbar .navbar-brand {
   font-weight: bold;
-  color: #ff4b4b; /* Rojo para el logo para destacar */
-  font-size: 1.5rem; /* Tamaño aumentado para un logo más prominente */
+  color: #ff4b4b; /* Rojo para el logo */
+  font-size: 1.5rem; /* Tamaño aumentado */
   display: flex;
   align-items: center;
 }
@@ -25,14 +25,14 @@
   color: #c5c6c7; /* Gris claro para los enlaces */
   margin-right: 1rem; /* Espacio entre los enlaces */
   font-size: 1rem; /* Tamaño de fuente ajustado para mejor legibilidad */
-  padding: 0.5rem 1rem; /* Padding aumentado para una apariencia más espaciosa */
-  transition: color 0.3s ease, background-color 0.3s ease; /* Transición suave para cambios de color */
+  padding: 0.5rem 1rem; /* Padding aumentado */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transición suave  */
 }
 
 .custom-navbar .nav-link:hover {
   color: #fff; /* Blanco para el texto al pasar el ratón */
   background-color: #ff4b4b; /* Fondo rojo al hacer hover */
-  border-radius: 4px; /* Bordes redondeados más marcados */
+  border-radius: 4px; /* Bordes redondeados */
   padding: 0.5rem 1rem; /* Mantener el padding al hacer hover */
 }
 

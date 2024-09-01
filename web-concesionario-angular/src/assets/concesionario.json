@@ -27,7 +27,7 @@
         "id": 4,
         "name": "TAHOE SUV",
         "image": "/assets/images/auto4.avif",
-        "description": "Un SUV que te deja sin palabras.\n\nEl Chevrolet Tahoe es grande y robusto, conocido por su espacio amplio, capacidad de remolque impresionante y un motor potente.\n\nEs ideal para familias grandes o personas que buscan un vehículo espacioso y cómodo para viajar largas distancias.\n\nAdemás, cuenta con características tecnológicas modernas y opciones de lujo que lo convierten en una excelente opción para quienes desean un SUV confiable y versátil, tanto para la ciudad como para aventuras fuera de carretera.",
+        "description": "Un SUV que te deja sin palabras.\n\nEl Chevrolet Tahoe es grande y robusto, conocido por su espacio amplio, capacidad de remolque impresionante y un motor potente.\n\nEs ideal para familias grandes o personas que buscan un vehículo espacioso y cómodo para viajar largas distancias.",
         "category": "vehiculo",
         "price": 131999.00
     },
