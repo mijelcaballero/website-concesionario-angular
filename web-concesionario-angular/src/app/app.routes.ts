@@ -3,8 +3,11 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AutoDetailComponent } from './auto-detail/auto-detail.component';
+import { AutoEditComponent } from './auto-edit/auto-edit.component';
 import { MotoDetailComponent } from './moto-detail/moto-detail.component';
+import { MotoEditComponent } from './moto-edit/moto-edit.component';
 import { PesadoDetailComponent } from './pesado-detail/pesado-detail.component';
+import { PesadoEditComponent } from './pesado-edit/pesado-edit.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactosComponent } from './contactos/contactos.component'; 
 import { NosotrosComponent } from './nosotros/nosotros.component';
@@ -20,8 +23,12 @@ export const routes: Routes = [
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'gallery', component: GalleryComponent },
   { path: 'autos/:id', component: AutoDetailComponent },
+  { path: 'auto-edit', component: AutoEditComponent, canActivate: [AuthGuard]},
+
   { path: 'motos/:id', component: MotoDetailComponent },
+  { path: 'moto-edit', component: MotoEditComponent, canActivate: [AuthGuard]},
   { path: 'pesados/:id', component: PesadoDetailComponent },
+  { path: 'pesado-edit', component: PesadoEditComponent, canActivate: [AuthGuard]},
   { path: 'contactos', component: ContactosComponent },
   { path: 'nosotros', component: NosotrosComponent },
   { path: '**', component: NotFoundComponent },

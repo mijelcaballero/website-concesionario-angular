@@ -14,9 +14,9 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  autos$: Observable<Auto[]> = of([]); // Inicializa con un Observable vacío
-  motos$: Observable<Moto[]> = of([]); // Inicializa con un Observable vacío
-  pesados$: Observable<Pesado[]> = of([]); // Inicializa con un Observable vacío
+  autos$: Observable<Auto[]> = of([]);
+  motos$: Observable<Moto[]> = of([]); 
+  pesados$: Observable<Pesado[]> = of([]); 
   loading = true;
 
   constructor(
@@ -30,7 +30,7 @@ export class GalleryComponent implements OnInit {
     this.motos$ = this.motoService.getMotos();
     this.pesados$ = this.pesadoService.getPesados();
 
-    // Cambia el loading una vez que los datos se han cargado
+    
     this.autos$.subscribe(() => this.loading = false);
     this.motos$.subscribe(() => this.loading = false);
     this.pesados$.subscribe(() => this.loading = false);

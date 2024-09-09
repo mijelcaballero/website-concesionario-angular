@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; 
 import { PesadoService, Pesado } from '../services/pesado.service';
 import { CartService } from '../services/cart.service'; // Importa el CartService
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,8 +20,9 @@ export class PesadoDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router, 
     private pesadoService: PesadoService,
-    private cartService: CartService, // Inyecta el CartService
+    private cartService: CartService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -59,11 +60,7 @@ export class PesadoDetailComponent implements OnInit {
   }
 
   updatePesado(id: string, pesado: Partial<Pesado>) {
-    this.pesadoService.updatePesado(id, pesado).then(() => {
-      console.log('Vehículo pesado actualizado con éxito');
-      // Redirigir o mostrar un mensaje de éxito
-    }).catch(error => {
-      console.error('Error al actualizar el vehículo pesado:', error);
-    });
+    // Redirige al formulario de edición con el ID del vehiculo pesado
+    this.router.navigate(['/pesado-edit'], { queryParams: { action: 'edit', id: id } });
   }
 }

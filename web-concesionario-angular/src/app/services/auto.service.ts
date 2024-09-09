@@ -13,6 +13,7 @@ export interface Auto {
 @Injectable({
   providedIn: 'root'
 })
+
 export class AutoService {
   constructor(private firestore: Firestore) {}
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; 
 import { MotoService, Moto } from '../services/moto.service';
 import { CartService } from '../services/cart.service'; // Importa el CartService
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,11 +17,13 @@ import { RouterModule } from '@angular/router';
 export class MotoDetailComponent implements OnInit {
   moto$: Observable<Moto | null> | null = null;
   loading = true;
+  
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router, 
     private motoService: MotoService,
-    private cartService: CartService, // Inyecta el CartService
+    private cartService: CartService,
     private snackBar: MatSnackBar
   ) {}
 
@@ -52,18 +54,19 @@ export class MotoDetailComponent implements OnInit {
   deleteMoto(id: string) {
     this.motoService.deleteMoto(id).then(() => {
       console.log('Moto eliminada con éxito');
-      // Redirigir o mostrar un mensaje de éxito
+      this.snackBar.open(`Moto eliminada con éxito`, 'Cerrar', {
+        duration: 3000,
+      });
     }).catch(error => {
       console.error('Error al eliminar la moto:', error);
+      this.snackBar.open(`Error al eliminar la moto`, 'Cerrar', {
+        duration: 3000,
+      });
     });
   }
 
   updateMoto(id: string, moto: Partial<Moto>) {
-    this.motoService.updateMoto(id, moto).then(() => {
-      console.log('Moto actualizada con éxito');
-      // Redirigir o mostrar un mensaje de éxito
-    }).catch(error => {
-      console.error('Error al actualizar la moto:', error);
-    });
+    // Redirige al formulario de edición con el ID de la moto
+    this.router.navigate(['/moto-edit'], { queryParams: { action: 'edit', id: id } });
   }
 }
