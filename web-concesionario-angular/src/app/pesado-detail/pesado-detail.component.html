@@ -1,14 +1,17 @@
-<div *ngIf="pesado$ | async as pesado; else loadingTemplate">
-  <h1>{{ pesado.name }}</h1>
-  <img [src]="pesado.image" alt="{{ pesado.name }}" />
-  <p>{{ pesado.description }}</p>
-  <p>Precio: {{ pesado.price | currency }}</p>
+<div *ngIf="pesado$ | async as pesado; else loading">
+  <div class="pesado-details">
+    <h2>{{ pesado.name }}</h2>
+    <img [src]="pesado.image" alt="{{ pesado.name }}" class="pesado-image">
+    <p><strong>Description:</strong> {{ pesado.description }}</p>
+    <p><strong>Price:</strong> {{ pesado.price | currency }}</p>
 
-  <button (click)="addToCart(pesado)">Comprar</button>
-  <button (click)="updatePesado(pesado.id.toString(), { name: pesado.name, price: pesado.price })">Actualizar</button>
-  <button (click)="deletePesado(pesado.id.toString())">Eliminar</button>
+    <button (click)="addToCart(pesado)" class="btn btn-primary">Add to Cart</button>
+    <button (click)="updatePesado(pesado.id)" class="btn btn-secondary">Actualizar</button> <!-- Botón para actualizar -->
+
+    <button (click)="deletePesado(pesado.id)" class="btn btn-danger">Delete</button>
+  </div>
 </div>
 
-<ng-template #loadingTemplate>
-  <p>Cargando detalles del vehículo pesado...</p>
+<ng-template #loading>
+  <p>Loading...</p>
 </ng-template>

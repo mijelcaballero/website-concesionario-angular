@@ -1,14 +1,17 @@
-<div *ngIf="moto$ | async as moto; else loadingTemplate">
-  <h1>{{ moto.name }}</h1>
-  <img [src]="moto.image" alt="{{ moto.name }}" />
-  <p>{{ moto.description }}</p>
-  <p>Precio: {{ moto.price | currency }}</p>
+<div *ngIf="moto$ | async as moto; else loading">
+  <div class="moto-details">
+    <h2>{{ moto.name }}</h2>
+    <img [src]="moto.image" alt="{{ moto.name }}" class="moto-image">
+    <p><strong>Description:</strong> {{ moto.description }}</p>
+    <p><strong>Price:</strong> {{ moto.price | currency }}</p>
 
-  <button (click)="addToCart(moto)">Comprar</button>
-  <button (click)="updateMoto(moto.id.toString(), { name: moto.name, price: moto.price })">Actualizar</button>
-  <button (click)="deleteMoto(moto.id.toString())">Eliminar</button>
+    <button (click)="addToCart(moto)" class="btn btn-primary">Add to Cart</button>
+    <button (click)="updateMoto(moto.id)" class="btn btn-secondary">Actualizar</button> <!-- Botón para actualizar -->
+
+    <button (click)="deleteMoto(moto.id)" class="btn btn-danger">Delete</button>
+  </div>
 </div>
 
-<ng-template #loadingTemplate>
-  <p>Cargando detalles de la moto...</p>
+<ng-template #loading>
+  <p>Loading...</p>
 </ng-template>

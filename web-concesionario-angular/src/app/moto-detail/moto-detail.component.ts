@@ -65,7 +65,7 @@ export class MotoDetailComponent implements OnInit {
     });
   }
 
-  updateMoto(id: string, moto: Partial<Moto>) {
+  updateMoto(id: string) {
     // Redirige al formulario de edición con el ID de la moto
     this.router.navigate(['/moto-edit'], { queryParams: { action: 'edit', id: id } });
   }

@@ -59,7 +59,7 @@ export class PesadoDetailComponent implements OnInit {
     });
   }
 
-  updatePesado(id: string, pesado: Partial<Pesado>) {
+  updatePesado(id: string) {
     // Redirige al formulario de edición con el ID del vehiculo pesado
     this.router.navigate(['/pesado-edit'], { queryParams: { action: 'edit', id: id } });
   }
