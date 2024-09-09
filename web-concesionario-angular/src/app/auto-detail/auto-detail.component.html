@@ -1,16 +1,14 @@
-<div class="container">
-    <div *ngIf="loading">Cargando detalles del auto...</div>
-  
-    <div *ngIf="!loading && auto" class="auto-detail-container">
-      <h1 class="auto-title">{{ auto?.name }}</h1>
-      <img [src]="auto?.image" alt="{{ auto?.name }}" class="auto-image" />
-      <p class="auto-description">{{ auto?.description }}</p>
-      <p class="auto-price">Precio: {{ auto?.price | currency }}</p>
-  
-      <button class="btn btn-primary">Comprar</button>
-    </div>
-  
-    <div *ngIf="!loading && !auto">
-      <p>Auto no encontrado</p>
-    </div>
+<div *ngIf="auto$ | async as auto; else loadingTemplate">
+  <h1>{{ auto.name }}</h1>
+  <img [src]="auto.image" alt="{{ auto.name }}" />
+  <p>{{ auto.description }}</p>
+  <p>Precio: {{ auto.price | currency }}</p>
+
+  <button (click)="addToCart(auto)">Comprar</button>
+  <button (click)="updateAuto(auto.id, { name: auto.name, price: auto.price })">Actualizar</button>
+  <button (click)="deleteAuto(auto.id)">Eliminar</button>
 </div>
+
+<ng-template #loadingTemplate>
+  <p>Cargando detalles del auto...</p>
+</ng-template>

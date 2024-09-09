@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { MotoService, Moto } from '../services/moto.service';
+import { CartService } from '../services/cart.service'; // Importa el CartService
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
-interface Moto {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-  price: number;
-  category: string; // "moto"
-}
 
 @Component({
   selector: 'app-moto-detail',
@@ -21,20 +15,22 @@ interface Moto {
   styleUrls: ['./moto-detail.component.css']
 })
 export class MotoDetailComponent implements OnInit {
-  moto: Moto | null = null;
+  moto$: Observable<Moto | null> | null = null;
   loading = true;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private motoService: MotoService,
+    private cartService: CartService, // Inyecta el CartService
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.http.get<{ motos: Moto[] }>('/assets/concesionario.json').subscribe({
-        next: (data) => {
-          // Busca la moto por ID
-          this.moto = data.motos.find(item => item.id === parseInt(id)) || null;
-          this.loading = false;
-        },
+      this.moto$ = this.motoService.getMotoById(id);
+      this.moto$.subscribe({
+        next: () => this.loading = false,
         error: (error) => {
           console.error('Error al cargar los detalles de la moto:', error);
           this.loading = false;
@@ -44,5 +40,30 @@ export class MotoDetailComponent implements OnInit {
       console.error('ID no encontrado');
       this.loading = false;
     }
+  }
+
+  addToCart(moto: Moto) {
+    this.cartService.addToCart(moto);
+    this.snackBar.open(`${moto.name} ha sido agregado al carrito!`, 'Cerrar', {
+      duration: 3000,
+    });
+  }
+
+  deleteMoto(id: string) {
+    this.motoService.deleteMoto(id).then(() => {
+      console.log('Moto eliminada con éxito');
+      // Redirigir o mostrar un mensaje de éxito
+    }).catch(error => {
+      console.error('Error al eliminar la moto:', error);
+    });
+  }
+
+  updateMoto(id: string, moto: Partial<Moto>) {
+    this.motoService.updateMoto(id, moto).then(() => {
+      console.log('Moto actualizada con éxito');
+      // Redirigir o mostrar un mensaje de éxito
+    }).catch(error => {
+      console.error('Error al actualizar la moto:', error);
+    });
   }
 }

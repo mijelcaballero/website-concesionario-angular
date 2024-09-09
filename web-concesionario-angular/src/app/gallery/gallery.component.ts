@@ -1,16 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AutoService, Auto } from '../services/auto.service';
+import { MotoService, Moto } from '../services/moto.service';
+import { PesadoService, Pesado } from '../services/pesado.service';
+import { Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
-interface Vehicle {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  description: string;
-  category: string; // "auto", "moto", "pesado"
-}
 
 @Component({
   selector: 'app-gallery',
@@ -20,29 +14,25 @@ interface Vehicle {
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  autos: Vehicle[] = [];
-  motos: Vehicle[] = [];
-  pesados: Vehicle[] = [];
+  autos$: Observable<Auto[]> = of([]); // Inicializa con un Observable vacío
+  motos$: Observable<Moto[]> = of([]); // Inicializa con un Observable vacío
+  pesados$: Observable<Pesado[]> = of([]); // Inicializa con un Observable vacío
   loading = true;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private autoService: AutoService,
+    private motoService: MotoService,
+    private pesadoService: PesadoService
+  ) {}
 
   ngOnInit(): void {
-    this.http.get<{ autos: Vehicle[], motos: Vehicle[], pesados: Vehicle[] }>('/assets/concesionario.json')
-      .subscribe(
-        data => {
-          this.autos = data.autos;
-          this.motos = data.motos;
-          this.pesados = data.pesados;
-          console.log('Autos:', this.autos); // Verificar autos
-          console.log('Motos:', this.motos); // Verificar motos
-          console.log('Pesados:', this.pesados); // Verificar pesados
-          this.loading = false;
-        },
-        error => {
-          console.error('Error al cargar los datos:', error);
-          this.loading = false;
-        }
-      );
+    this.autos$ = this.autoService.getAutos();
+    this.motos$ = this.motoService.getMotos();
+    this.pesados$ = this.pesadoService.getPesados();
+
+    // Cambia el loading una vez que los datos se han cargado
+    this.autos$.subscribe(() => this.loading = false);
+    this.motos$.subscribe(() => this.loading = false);
+    this.pesados$.subscribe(() => this.loading = false);
   }
 }
