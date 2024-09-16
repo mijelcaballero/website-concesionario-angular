@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
-import { CommonModule } from '@angular/common';
 import { InvoiceService } from '../services/invoice.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Item } from '../models/item.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +15,7 @@ import { Router } from '@angular/router';
 })
 
 export class CartComponent implements OnInit {
-  cartItems: any[] = [];
+  cartItems$: Observable<{ item: Item, quantity: number }[]>; // Usa Observable para manejar los datos asíncronos
   total: number = 0;
   iva: number = 0;
   finalAmount: number = 0;
@@ -22,25 +24,28 @@ export class CartComponent implements OnInit {
     private cartService: CartService, 
     private invoiceService: InvoiceService,
     private router: Router
-  ) {}
+  ) {
+    this.cartItems$ = this.cartService.getCartItems(); // Obtener los artículos del carrito como Observable
+  }
 
   ngOnInit() {
-    this.cartService.getCartItems().subscribe(items => {
-      this.cartItems = items;
-      this.calculateTotals();
+    this.cartItems$.subscribe(items => {
+      this.calculateTotals(items);
     });
   }
 
-  calculateTotals() {
-    const { total, iva, finalAmount } = this.invoiceService.calculateInvoice(this.cartItems);
+  calculateTotals(cartItems: { item: Item, quantity: number }[]) {
+    const { total, iva, finalAmount } = this.invoiceService.calculateInvoice(cartItems);
     this.total = total;
     this.iva = iva;
     this.finalAmount = finalAmount;
   }
 
-  removeFromCart(item: any) {
+  removeFromCart(item: Item) {
     this.cartService.removeFromCart(item);
-    this.calculateTotals();
+    this.cartItems$.subscribe(items => {
+      this.calculateTotals(items);
+    });
   }
 
   generateInvoice() {

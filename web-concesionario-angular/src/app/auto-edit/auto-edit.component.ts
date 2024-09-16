@@ -56,7 +56,7 @@ export class AutoEditComponent implements OnInit {
       this.autoService.updateAuto(this.itemId, this.auto).subscribe({
         next: () => {
           this.snackBar.open('Auto actualizado exitosamente!', 'Cerrar', { duration: 3000 });
-          this.router.navigate(['/autos']);
+          this.router.navigate(['/gallery']);
         },
         error: error => {
           this.snackBar.open('Error al actualizar el auto', 'Cerrar', { duration: 3000 });

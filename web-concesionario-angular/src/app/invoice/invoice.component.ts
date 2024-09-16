@@ -13,6 +13,7 @@ import { forkJoin } from 'rxjs';
   templateUrl: './invoice.component.html',
   styleUrls: ['./invoice.component.css']
 })
+
 export class InvoiceComponent implements OnInit {
   cartItems: any[] = [];
   total: number = 0;
@@ -47,12 +48,12 @@ export class InvoiceComponent implements OnInit {
     });
   
     forkJoin(stockChecks).subscribe(responses => {
-      // Ahora comparamos las respuestas en base al campo "mensaje"
+      
       const allInStock = responses.every(response => response.mensaje === "Stock disponible");
   
       if (allInStock) {
         this.stockSufficient = true;
-        this.procesarPago(); // Llamamos a procesarPago si el stock es suficiente
+        this.procesarPago(); 
       } else {
         this.stockSufficient = false;
         alert('Uno o más productos no tienen suficiente stock.');
@@ -64,6 +65,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   procesarPago(): void {
+
     const return_url = 'http://localhost:4200/success';
     const cancel_url = 'http://localhost:4200/api/v1/productos';
 

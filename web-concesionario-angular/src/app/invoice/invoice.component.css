@@ -1,0 +1,33 @@
+
+.container {
+    max-width: 800px;
+    margin-top: 85px;
+}
+  
+.table {
+    margin-bottom: 1.5rem;
+}
+  
+.table th,
+.table td {
+    text-align: center;
+}
+  
+.totals p {
+    margin: 0;
+}
+  
+.totals {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+  
+.text-center {
+    text-align: center;
+}
+  
+.btn {
+    margin-top: 1rem;
+}
+  

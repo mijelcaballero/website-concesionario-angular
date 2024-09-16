@@ -1,12 +1,53 @@
-<div class="invoice-container">
-    <h2>Invoice Preview</h2>
-    <div *ngFor="let item of cartItems" class="invoice-item">
-      <p>{{item.name}} - {{item.price | currency}}</p>
+<!-- invoice.component.html -->
+<div class="container my-4">
+  <h2 class="mb-4">Factura</h2>
+
+  <!-- Verificación de que hay elementos en el carrito -->
+  <div *ngIf="cartItems.length > 0; else noItems">
+    <!-- Tabla de detalles de la factura -->
+    <div class="table-responsive mb-4">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems">
+            <td>{{ item.item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.item.price | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="invoice-summary">
-      <p>Total: {{total | currency}}</p>
-      <p>IVA (15%): {{iva | currency}}</p>
-      <p>Final Amount: {{finalAmount | currency}}</p>
+
+    <!-- Totales -->
+    <div class="totals mb-4">
+      <div class="d-flex justify-content-between">
+        <p><strong>Total:</strong></p>
+        <p>{{ total | currency }}</p>
+      </div>
+      <div class="d-flex justify-content-between">
+        <p><strong>IVA (15%):</strong></p>
+        <p>{{ iva | currency }}</p>
+      </div>
+      <div class="d-flex justify-content-between">
+        <p><strong>Total a Pagar:</strong></p>
+        <p>{{ finalAmount | currency }}</p>
+      </div>
     </div>
+
+    <!-- Botón para pagar -->
+    <div class="text-center">
+      <button class="btn btn-primary" (click)="verificarStock()">Pagar</button>
+    </div>
+  </div>
+
+  <!-- Mensaje si el carrito está vacío -->
+  <ng-template #noItems>
+    <p>No hay productos en el carrito.</p>
+  </ng-template>
 </div>
-  

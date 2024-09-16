@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PaypalService } from './paypal.service';
 import { Observable, switchMap } from 'rxjs';
+import { Item } from '../models/item.interface';
 
 
 @Injectable({
@@ -12,12 +13,12 @@ export class InvoiceService {
 
   constructor(private http: HttpClient, private paypalService: PaypalService) {}
 
-  calculateInvoice(cartItems: any[]): { total: number, iva: number, finalAmount: number } {
+  calculateInvoice(cartItems: { item: Item, quantity: number }[]): { total: number, iva: number, finalAmount: number } {
     let total = 0;
-    const ivaRate = 0.12;
+    const ivaRate = 0.15;
 
     cartItems.forEach(item => {
-      total += item.price * item.quantity;
+      total += item.item.price * item.quantity; // Multiplicar precio por cantidad
     });
 
     const iva = total * ivaRate;
