@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'; 
 import { MotoService, Moto } from '../services/moto.service';
-import { CartService } from '../services/cart.service'; // Importa el CartService
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { CartService } from '../services/cart.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-moto-detail',
@@ -15,9 +15,11 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./moto-detail.component.css']
 })
 export class MotoDetailComponent implements OnInit {
+  
   moto$: Observable<Moto | null> | null = null;
   loading = true;
-  
+  quantity: number = 1; // Inicializa la cantidad por defecto
+  itemQuantity: number = 0; // Cantidad del artículo en el carrito
 
   constructor(
     private route: ActivatedRoute,
@@ -30,9 +32,15 @@ export class MotoDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.moto$ = this.motoService.getMotoById(id);
+      const numericId = Number(id);
+      this.moto$ = this.motoService.getMoto(numericId);
       this.moto$.subscribe({
-        next: () => this.loading = false,
+        next: (moto) => {
+          this.loading = false;
+          if (moto) {
+            this.itemQuantity = this.cartService.getItemQuantity(moto.id); // Obtener la cantidad del carrito
+          }
+        },
         error: (error) => {
           console.error('Error al cargar los detalles de la moto:', error);
           this.loading = false;
@@ -45,28 +53,26 @@ export class MotoDetailComponent implements OnInit {
   }
 
   addToCart(moto: Moto) {
-    this.cartService.addToCart(moto);
+    if (this.quantity < 1) {
+      this.quantity = 1;
+    }
+    this.cartService.addToCart(moto, this.quantity);
     this.snackBar.open(`${moto.name} ha sido agregado al carrito!`, 'Cerrar', {
       duration: 3000,
     });
+    this.itemQuantity = this.cartService.getItemQuantity(moto.id); // Actualizar la cantidad después de agregar
   }
 
-  deleteMoto(id: string) {
-    this.motoService.deleteMoto(id).then(() => {
+  deleteMoto(id: number) {
+    this.motoService.deleteMoto(id).subscribe(() => {
       console.log('Moto eliminada con éxito');
-      this.snackBar.open(`Moto eliminada con éxito`, 'Cerrar', {
-        duration: 3000,
-      });
-    }).catch(error => {
+      this.router.navigate(['/gallery']); // Redirigir a la galería después de eliminar
+    }, error => {
       console.error('Error al eliminar la moto:', error);
-      this.snackBar.open(`Error al eliminar la moto`, 'Cerrar', {
-        duration: 3000,
-      });
     });
   }
 
-  updateMoto(id: string) {
-    // Redirige al formulario de edición con el ID de la moto
+  updateMoto(id: number) {
     this.router.navigate(['/moto-edit'], { queryParams: { action: 'edit', id: id } });
   }
 }

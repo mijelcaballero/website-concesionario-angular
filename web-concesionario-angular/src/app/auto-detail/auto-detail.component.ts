@@ -16,8 +16,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class AutoDetailComponent implements OnInit {
+  
   auto$: Observable<Auto | null> | null = null;
   loading = true;
+  quantity: number = 1; // Inicializa la cantidad por defecto
+  itemQuantity: number = 0; // Cantidad del artículo en el carrito
 
   constructor(
     private route: ActivatedRoute,
@@ -30,9 +33,15 @@ export class AutoDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.auto$ = this.autoService.getAutoById(id);
+      const numericId = Number(id); 
+      this.auto$ = this.autoService.getAuto(numericId);
       this.auto$.subscribe({
-        next: () => this.loading = false,
+        next: (auto) => {
+          this.loading = false;
+          if (auto) {
+            this.itemQuantity = this.cartService.getItemQuantity(auto.id); // Obtener la cantidad del carrito
+          }
+        },
         error: (error) => {
           console.error('Error al cargar los detalles del auto:', error);
           this.loading = false;
@@ -45,22 +54,27 @@ export class AutoDetailComponent implements OnInit {
   }
 
   addToCart(auto: Auto) {
-    this.cartService.addToCart(auto);
+    //cantidad sea siempre positiva
+    if (this.quantity < 1) {
+      this.quantity = 1;
+    }
+    this.cartService.addToCart(auto, this.quantity);
     this.snackBar.open(`${auto.name} ha sido agregado al carrito!`, 'Cerrar', {
       duration: 3000,
     });
+    this.itemQuantity = this.cartService.getItemQuantity(auto.id); // Actualizar la cantidad después de agregar
   }
 
-  deleteAuto(id: string) {
-    this.autoService.deleteAuto(id).then(() => {
+  deleteAuto(id: number) { 
+    this.autoService.deleteAuto(id).subscribe(() => {
       console.log('Auto eliminado con éxito');
-      // Redirigir o mostrar un mensaje de éxito
-    }).catch(error => {
+      this.router.navigate(['/gallery']); // Redirigir a la galería después de eliminar
+    }, error => {
       console.error('Error al eliminar el auto:', error);
     });
   }
 
-  updateAuto(id: string) {
+  updateAuto(id: number) { 
     // Redirige al formulario de edición con el ID del auto
     this.router.navigate(['/auto-edit'], { queryParams: { action: 'edit', id: id } });
   }

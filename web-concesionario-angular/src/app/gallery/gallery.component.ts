@@ -13,7 +13,9 @@ import { RouterModule } from '@angular/router';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
+
 export class GalleryComponent implements OnInit {
+
   autos$: Observable<Auto[]> = of([]);
   motos$: Observable<Moto[]> = of([]); 
   pesados$: Observable<Pesado[]> = of([]); 
@@ -26,6 +28,7 @@ export class GalleryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    
     this.autos$ = this.autoService.getAutos();
     this.motos$ = this.motoService.getMotos();
     this.pesados$ = this.pesadoService.getPesados();

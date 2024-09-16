@@ -1,43 +1,44 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, doc, docData, setDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Item } from '../models/item.interface';
 
-export interface Moto {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  description: string;
+export interface Moto extends Item {
+  category: 'motocicleta';
 }
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MotoService {
-  constructor(private firestore: Firestore) {}
 
+  private apiUrl = 'http://localhost:8080/api/v1/motos';
+
+  constructor(private http: HttpClient) { }
+
+  // Obtener todas las motos
   getMotos(): Observable<Moto[]> {
-    const motoCollection = collection(this.firestore, 'motos');
-    return collectionData(motoCollection, { idField: 'id' }) as Observable<Moto[]>;
+    return this.http.get<Moto[]>(this.apiUrl);
   }
 
-  getMotoById(id: string): Observable<Moto | null> {
-    const motoDoc = doc(this.firestore, `motos/${id}`);
-    return docData(motoDoc, { idField: 'id' }) as Observable<Moto | null>;
+  // Obtener una moto por ID
+  getMoto(id: number): Observable<Moto> {
+    return this.http.get<Moto>(`${this.apiUrl}/${id}`);
   }
 
-  createMoto(moto: Moto): Promise<void> {
-    const motoDoc = doc(this.firestore, `motos/${moto.id}`);
-    return setDoc(motoDoc, moto);
+  // Crear una nueva moto
+  createMoto(moto: Moto): Observable<Moto> {
+    return this.http.post<Moto>(this.apiUrl, moto);
   }
 
-  updateMoto(id: string, moto: Partial<Moto>): Promise<void> {
-    const motoDoc = doc(this.firestore, `motos/${id}`);
-    return updateDoc(motoDoc, moto);
+  // Actualizar una moto
+  updateMoto(id: number, moto: Moto): Observable<Moto> {
+    return this.http.put<Moto>(`${this.apiUrl}/${id}`, moto);
   }
 
-  deleteMoto(id: string): Promise<void> {
-    const motoDoc = doc(this.firestore, `motos/${id}`);
-    return deleteDoc(motoDoc);
+  // Eliminar una moto
+  deleteMoto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

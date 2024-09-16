@@ -1,44 +1,44 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, doc, docData, setDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Item } from '../models/item.interface';
 
-export interface Auto {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  description: string;
+export interface Auto extends Item {
+  category: 'vehiculo';
 }
+
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AutoService {
-  constructor(private firestore: Firestore) {}
 
+  private apiUrl = 'http://localhost:8080/api/v1/autos'; // URL del endpoint en el backend de Spring Boot.
+
+  constructor(private http: HttpClient) { }
+
+  // Obtener todos los autos
   getAutos(): Observable<Auto[]> {
-    const autoCollection = collection(this.firestore, 'autos');
-    return collectionData(autoCollection, { idField: 'id' }) as Observable<Auto[]>;
+    return this.http.get<Auto[]>(this.apiUrl);
   }
 
-  getAutoById(id: string): Observable<Auto | null> {
-    const autoDoc = doc(this.firestore, `autos/${id}`);
-    return docData(autoDoc, { idField: 'id' }) as Observable<Auto | null>;
+  // Obtener un auto por ID
+  getAuto(id: number): Observable<Auto> {
+    return this.http.get<Auto>(`${this.apiUrl}/${id}`);
   }
 
-  createAuto(auto: Auto): Promise<void> {
-    const autoDoc = doc(this.firestore, `autos/${auto.id}`);
-    return setDoc(autoDoc, auto);
+  // Crear un nuevo auto
+  createAuto(auto: Auto): Observable<Auto> {
+    return this.http.post<Auto>(this.apiUrl, auto);
   }
 
-  updateAuto(id: string, auto: Partial<Auto>): Promise<void> {
-    const autoDoc = doc(this.firestore, `autos/${id}`);
-    return updateDoc(autoDoc, auto);
+  // Actualizar un auto
+  updateAuto(id: number, auto: Auto): Observable<Auto> {
+    return this.http.put<Auto>(`${this.apiUrl}/${id}`, auto);
   }
 
-  deleteAuto(id: string): Promise<void> {
-    const autoDoc = doc(this.firestore, `autos/${id}`);
-    return deleteDoc(autoDoc);
+  // Eliminar un auto
+  deleteAuto(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
